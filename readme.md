@@ -1,6 +1,6 @@
-#button-capture
-
-##A simple event reader and responder for the reMarkable tablet.
+# button-capture
+ 
+## A simple event reader and responder for the reMarkable tablet.
 
 This small program works in conjunction with [draft](https://github.com/dixonary/draft) to provide functionality.
 
