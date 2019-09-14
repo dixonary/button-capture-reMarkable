@@ -2,7 +2,7 @@
  
 ## A simple event reader and responder for the reMarkable tablet.
 
-This small program works in conjunction with [draft](https://github.com/dixonary/draft) to provide functionality.
+This small program works in conjunction with [draft](https://github.com/dixonary/draft-reMarkable) to provide functionality.
 
 It can be run on its own - with small modification - to provide additional button functionality!
 
