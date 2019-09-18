@@ -1,0 +1,13 @@
+info:
+  package-name: rm-button-capture
+  version: 1.0
+  architecture: armv7-3.2
+  maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
+  description: A simple program to captire gpio button input on the reMarkable
+data:
+  opt:
+    bin:
+      button-capture: build/button-capture
+    etc:
+      button-capture:
+        command.sh: command.sh
