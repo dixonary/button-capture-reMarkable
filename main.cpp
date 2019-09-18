@@ -11,9 +11,6 @@
 
 using namespace std;
 
-const char * commandFile = "/opt/etc/button-capture/command.sh";
-long millis = 1000;
-
 //Keeping track of presses.
 struct PressRecord {
     bool pressed = false;
@@ -35,7 +32,7 @@ int main()
     // Open the button device.
     ifstream eventsfile;
     eventsfile.open("/dev/input/event2", ios::in);
-    if (eventsfile.is_open()) {
+    if(eventsfile.is_open()) {
         cout << "File open for reading." << endl;
     }
     else {
@@ -47,17 +44,17 @@ int main()
     input_event ie;
     streamsize sie = static_cast<streamsize>(sizeof(struct input_event));
 
-    while (eventsfile.read((char *)&ie, sie)) {
+    while(eventsfile.read((char*)&ie, sie)) {
 
         // Read for non-zero event codes.
-        if (ie.code != 0) {
+        if(ie.code != 0) {
 
             // Toggle the button state.
             map[ie.code].pressed = !map[ie.code].pressed;
 
             // On press
-            if (map[ie.code].pressed) {
-                gettimeofday(&map[ie.code].pressTime, NULL);
+            if(map[ie.code].pressed) {
+                gettimeofday(&map[ie.code].pressTime,NULL);
                 cout << map[ie.code].name << " " << "DOWN" << endl;
             }
 
@@ -67,21 +64,21 @@ int main()
                 gettimeofday(&ctime,NULL);
 
                 // Calculate length of hold
-                long usecs = ((ctime.tv_sec   -  map[ie.code].pressTime.tv_sec  ) * 1000000L
+                long usecs = ((ctime.tv_sec   -  map[ie.code].pressTime.tv_sec  )*1000000L
                               +ctime.tv_usec) -  map[ie.code].pressTime.tv_usec;
 
                 // Print out press information
                 cout << map[ie.code].name << " " << "UP (" << usecs << " microseconds)" << endl;
 
                 // Check if MIDDLE was held for > 1 second
-                if (map[ie.code].name == "Middle" && usecs >= millis * 1000) {
+                if(map[ie.code].name == "Middle" && usecs > 1000000L) {
                     ifstream termfile;
-                    // Then execute the contents of commandFile
-                    termfile.open(commandFile, ios::in);
-                    if (termfile.is_open()) {
+                    // Then execute the contents of /etc/draft/.terminate
+                    termfile.open("/etc/draft/.terminate", ios::in);
+                    if(termfile.is_open()) {
                         cout << "Termfile exists and can be read." << endl;
                         termfile.close();
-                        system("/bin/bash " + *commandFile);
+                        system("/bin/bash /etc/draft/.terminate");
                     }
                     else {
                         cout << "Termfile couldn't be read." << endl;
