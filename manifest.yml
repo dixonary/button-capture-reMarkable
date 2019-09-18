@@ -10,4 +10,4 @@ data:
       button-capture: build/button-capture
     etc:
       button-capture:
-        command.sh: command.sh
+        command.sh: src/command.sh
