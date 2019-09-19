@@ -1,0 +1,23 @@
+{
+    "info": {
+        "package-name": "rm-button-capture",
+        "version": "1.1.0",
+        "maintainer": "Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>",
+        "description": "A simple program to capture gpio button input on the reMarkable",
+    },
+    "data": {
+        "opt": {
+            "bin": {
+                "button-capture": "build/button-capture"
+            },
+            "etc": {
+                "button-capture": {
+                    "command.sh": "src/command.sh"
+                },
+                "systemd": {
+                    "button-capture.service": "src/button-capture.service"
+                }
+            }
+        }
+    }
+}

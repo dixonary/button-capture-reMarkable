@@ -1,0 +1,9 @@
+[Unit]
+Description=button capture service
+After=home.mount
+
+[Service]
+ExecStart=/opt/bin/button-capture
+
+[Install]
+WantedBy=multi-user.target
