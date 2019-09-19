@@ -47,7 +47,7 @@ int main()
     input_event ie;
     streamsize sie = static_cast<streamsize>(sizeof(struct input_event));
 
-    while (eventsfile.read((char *)&ie, sie)) {
+    while (eventsfile.read((char*)&ie, sie)) {
 
         // Read for non-zero event codes.
         if (ie.code != 0) {
