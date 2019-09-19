@@ -11,7 +11,7 @@
 
 using namespace std;
 
-const char * commandFile = "/opt/etc/button-capture/command.sh";
+const string commandFile("/opt/etc/button-capture/command.sh");
 long millis = 1000;
 
 //Keeping track of presses.
@@ -81,7 +81,8 @@ int main()
                     if (termfile.is_open()) {
                         cout << "Termfile exists and can be read." << endl;
                         termfile.close();
-                        system("/bin/bash " + *commandFile);
+                        const string cmd("/bin/bash " + commandFile);
+                        system(cmd.c_str());
                     }
                     else {
                         cout << "Termfile couldn't be read." << endl;
