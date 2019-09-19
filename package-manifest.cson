@@ -13,6 +13,9 @@
             "etc": {
                 "button-capture": {
                     "command.sh": "src/command.sh"
+                },
+                "systemd": {
+                    "button-capture.service": "src/button-capture.service"
                 }
             }
         }
